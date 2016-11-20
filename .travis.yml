@@ -1,0 +1,20 @@
+language: node_js
+
+os:
+- osx
+- linux
+sudo: required
+
+node_js:
+  - 'node'
+
+before_install:
+- npm install -g gulp
+- npm install
+
+cache:
+  directories:
+    - node_modules
+
+script:
+- npm run travis

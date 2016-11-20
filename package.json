@@ -1,0 +1,42 @@
+{
+  "name": "peapod",
+  "productName": "PeaPod",
+  "version": "0.0.1",
+  "description": "Unofficial PeaPod Native App for Windows, macOS and Linux platforms",
+  "main": "app.js",
+  "repository": {
+    "url": "https://github.com/soleo/electron-peapod.git",
+    "type": "git"
+  },
+  "scripts": {
+    "test": "xo",
+    "start": "electron .",
+    "build": "yarn run build:macos && yarn run build:linux && yarn run build:windows",
+    "build:macos": "electron-packager . --overwrite --asar --out=dist --ignore='^media$' --platform=darwin --arch=x64 --icon=static/Icon.icns --app-bundle-id=com.xinjiangshao.peapod --sign='Developer ID Application: Xinjiang Shao (63YV2X6Y4E)' && cd dist/PeaPod-darwin-x64 && zip -ryXq9 ../PeaPod-osx-${npm_package_version}.zip PeaPod.app",
+    "build:linux": "electron-packager . --overwrite --out=dist --ignore='^media$' --platform=linux --arch=x64 --app-bundle-id=com.xinjiangshao.peapod && cd dist/PeaPod-linux-x64/ && zip -ryq9 ../PeaPod-linux-${npm_package_version}.zip *",
+    "build:windows": "electron-packager . --overwrite --asar --out=dist --ignore='^media$' --platform=win32 --arch=ia32 --icon=static/Icon.ico --version-string.ProductName=$npm_package_productName && cd dist/PeaPod-win32-ia32 && zip -ryq9 ../PeaPod-windows-${npm_package_version}.zip *"
+  },
+  "author": "Xinjiang Shao <shaoxinjiang@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "electron-config": "^0.2.1",
+    "electron-context-menu": "^0.7.0",
+    "electron-debug": "^1.1.0",
+    "electron-dl": "^1.5.0",
+    "element-ready": "^0.2.0",
+    "mousetrap": "^1.6.0",
+    "mousetrap-global-bind": "^1.1.0"
+  },
+  "devDependencies": {
+    "electron": "^1.4.6",
+    "electron-packager": "^8.3.0",
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  }
+}

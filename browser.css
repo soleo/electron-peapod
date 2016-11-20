@@ -1,0 +1,12 @@
+/* default color */
+html {
+	background-color: #f2f2f2;
+}
+
+site-subheader-management {
+	padding-top: 2rem;
+}
+
+header-module .header-pane_section-wrapper {
+	top: 2rem;
+}
