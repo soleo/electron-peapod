@@ -5,6 +5,7 @@
 
 # Electron PeaPod
 [![Build Status](https://travis-ci.org/soleo/electron-peapod.svg?branch=master)](https://travis-ci.org/soleo/electron-peapod)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 A Unofficial Native PeaPod App for Windows, macOS and Linux Platforms built with Electron.
 
