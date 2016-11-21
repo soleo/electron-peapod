@@ -21,8 +21,8 @@ exports.create = win => {
 	};
 
 	const checkOutNow = () => {
-		console.log('Check Out Shopping Cart')
-	}
+		console.log('Check Out Shopping Cart');
+	};
 
 	const contextMenu = electron.Menu.buildFromTemplate([
 		{

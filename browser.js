@@ -8,7 +8,6 @@ const config = require('./config');
 const ipc = electron.ipcRenderer;
 const $ = document.querySelector.bind(document);
 
-
 function registerShortcuts() {
 	Mousetrap.bind('backspace', () => {
 		window.history.back();
@@ -38,9 +37,9 @@ function registerShortcuts() {
 }
 
 function init() {
-	// TODO: Figure Out the User's ID first
+	// Figure Out the User's ID first
 	registerShortcuts();
-	console.log('Register Shortcuts')
+	console.log('Register Shortcuts');
 }
 
 ipc.on('log-out', () => {
