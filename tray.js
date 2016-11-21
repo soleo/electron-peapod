@@ -6,7 +6,7 @@ const app = electron.app;
 let tray = null;
 
 exports.create = win => {
-	if (process.platform === 'darwin' || tray) {
+	if (process.platform !== 'darwin' || tray) {
 		return;
 	}
 
@@ -20,11 +20,21 @@ exports.create = win => {
 		}
 	};
 
+	const checkOutNow = () => {
+		console.log('Check Out Shopping Cart')
+	}
+
 	const contextMenu = electron.Menu.buildFromTemplate([
 		{
 			label: 'Toggle',
 			click() {
 				toggleWin();
+			}
+		},
+		{
+			label: 'Checkout Shopping Cart',
+			click() {
+				checkOutNow();
 			}
 		},
 		{
@@ -42,7 +52,7 @@ exports.create = win => {
 };
 
 exports.setBadge = shouldDisplayNoneEmptyCart => {
-	if (process.platform === 'darwin' || !tray) {
+	if (process.platform !== 'darwin' || !tray) {
 		return;
 	}
 

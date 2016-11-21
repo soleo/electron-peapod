@@ -47,8 +47,7 @@ function createMainWindow () {
 		width: lastWindowState.width,
 		height: lastWindowState.height,
 		icon: process.platform === 'linux' && path.join(__dirname, 'static/Icon.png'),
-		title: 'PeaPod',
-		titleBarStyle: 'hidden-inset',
+		//titleBarStyle: 'hidden-inset',
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: path.join(__dirname, 'browser.js'),
@@ -66,12 +65,17 @@ function createMainWindow () {
 	mainWindow.setTitle(app.getName())
 
 	// Emitted when the window is closed.
-	mainWindow.on('closed', () => {
-		// Dereference the window object, usually you would store windows
-		// in an array if your app supports multi windows, this is the time
-		// when you should delete the corresponding element.
-		mainWindow = null
-	})
+	mainWindow.on('close', e => {
+		if (!isQuitting) {
+			e.preventDefault();
+
+			if (process.platform === 'darwin') {
+				app.hide();
+			} else {
+				mainWindow.hide();
+			}
+		}
+	});
 
 	mainWindow.on('page-title-updated', e => {
 		e.preventDefault()
@@ -125,7 +129,7 @@ app.on('activate', () => {
 app.on('before-quit', () => {
 	isQuitting = true;
 
-	// if (!mainWindow.isFullScreen()) {
-	// 	config.set('lastWindowState', mainWindow.getBounds());
-	// }
+	if (!mainWindow.isFullScreen()) {
+		config.set('lastWindowState', mainWindow.getBounds());
+	}
 });

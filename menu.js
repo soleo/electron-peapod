@@ -44,7 +44,7 @@ const viewSubmenu = [
 
 const helpSubmenu = [
 	{
-		label: `${appName} Website`,
+		label: `Electron ${appName} Source Code`,
 		click() {
 			shell.openExternal('https://github.com/soleo/electron-peapod');
 		}

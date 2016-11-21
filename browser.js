@@ -9,85 +9,7 @@ const ipc = electron.ipcRenderer;
 const $ = document.querySelector.bind(document);
 
 
-function registerShortcuts(username) {
-	Mousetrap.bind('n', () => {
-		newTweet();
-		return false;
-	});
-
-	Mousetrap.bind('m', () => {
-		newDM();
-		return false;
-	});
-
-	Mousetrap.bind(['g h', 'mod+1'], () => {
-		$('a[href$="/home"]').click();
-	});
-
-	Mousetrap.bind(['g n', 'mod+2'], () => {
-		$('a[href$="/notifications"]').click();
-	});
-
-	Mousetrap.bind(['g m', 'mod+3'], () => {
-		$('a[href$="/messages"]').click();
-	});
-
-	Mousetrap.bind(['/', 'mod+4'], () => {
-		$('a[href$="/search"]').click();
-		return false;
-	});
-
-	Mousetrap.bind(['g p', 'mod+5'], () => {
-		$('a[href$="/account"]').click();
-		$(`a[href$="/${username}"]`).click();
-	});
-
-	Mousetrap.bind('g l', () => {
-		$('a[href$="/account"]').click();
-		$(`a[href$="/${username}"]`).click();
-		$(`a[href$="/${username}/likes"]`).click();
-	});
-
-	Mousetrap.bind('g i', () => {
-		$('a[href$="/account"]').click();
-		$(`a[href$="/${username}/lists"]`).click();
-	});
-
-	// Closes images, DM windows, etc.
-	Mousetrap.bindGlobal('esc', () => {
-		const btn = $('button.INAWBu0V._1i_BWev4.QwoCevfW.Q1vpCyfl');
-
-		if (btn) {
-			btn.click();
-		}
-	});
-
-	Mousetrap.bindGlobal('command+enter', () => {
-		if (window.location.pathname === '/compose/tweet') {
-			$('button._1LQ_VFHl._2cmVIBgK').click();
-		}
-
-		if (window.location.pathname.split('/')[1] === 'messages') {
-			$('button[data-testid="dmComposerSendButton"]').click();
-		}
-	});
-
-	Mousetrap.bind('right', () => {
-		const nextBtn = $('button._2p6iBzFu._2UbkmNPH');
-
-		if (nextBtn) {
-			nextBtn.click();
-		}
-	});
-
-	Mousetrap.bind('left', () => {
-		const prevBtn = $('button._2p6iBzFu.lYVIpMQ4');
-
-		if (prevBtn) {
-			prevBtn.click();
-		}
-	});
-
+function registerShortcuts() {
 	Mousetrap.bind('backspace', () => {
 		window.history.back();
 	});
@@ -96,9 +18,6 @@ function registerShortcuts(username) {
 	const pageScrollPctHeight = 0.9;
 	const fromScrollTop = n => document.body.scrollTop + n;
 	const scrollToY = y => window.scrollTo(0, y);
-
-	Mousetrap.bind('j', scrollToTweet);
-	Mousetrap.bind('k', scrollToTweet);
 
 	Mousetrap.bind('g g', () => {
 		scrollToY(0);
@@ -119,14 +38,13 @@ function registerShortcuts(username) {
 }
 
 function init() {
-	const state = JSON.parse($('.___iso-state___').dataset.state).initialState;
-	//const username = state.settings.data.screen_name;
-
-	//registerShortcuts(username);
+	// TODO: Figure Out the User's ID first
+	registerShortcuts();
+	console.log('Register Shortcuts')
 }
 
 ipc.on('log-out', () => {
-	window.location.href = '/logout';
+	// Logout Current User
 });
 
 ipc.on('zoom-reset', () => {
@@ -172,6 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	// enable OS specific styles
 	document.documentElement.classList.add(`os-${process.platform}`);
 
-	// detect when React is ready before firing init
-	//elementReady('#react-root header').then(init);
+	// detect when AngularJs is ready before firing init
+	elementReady('html.wf-active').then(init);
 });

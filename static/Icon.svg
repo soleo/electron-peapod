@@ -5,9 +5,9 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#363636" x="0" y="0" width="1024" height="1024" rx="100"></rect>
-        <g id="Icon" fill="#7AB944">
-            <ellipse id="Oval" cx="512" cy="516" rx="383" ry="383"></ellipse>
+        <g id="Icon">
+            <rect id="Rectangle" fill="#363636" x="0" y="0" width="1024" height="1024" rx="100"></rect>
+            <ellipse id="Oval" fill="#7AB944" cx="512" cy="516" rx="383" ry="383"></ellipse>
         </g>
     </g>
 </svg>
