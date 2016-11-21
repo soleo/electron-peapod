@@ -11,6 +11,7 @@
   "scripts": {
     "test": "xo",
     "start": "electron .",
+    "travis": "./scripts/travis-build-test.sh",
     "build": "yarn run build:macos && yarn run build:linux && yarn run build:windows",
     "build:macos": "electron-packager . --overwrite --asar --out=dist --ignore='^media$' --platform=darwin --arch=x64 --icon=static/Icon.icns --app-bundle-id=com.xinjiangshao.peapod --sign='Developer ID Application: Xinjiang Shao (63YV2X6Y4E)' && cd dist/PeaPod-darwin-x64 && zip -ryXq9 ../PeaPod-osx-${npm_package_version}.zip PeaPod.app",
     "build:linux": "electron-packager . --overwrite --out=dist --ignore='^media$' --platform=linux --arch=x64 --app-bundle-id=com.xinjiangshao.peapod && cd dist/PeaPod-linux-x64/ && zip -ryq9 ../PeaPod-linux-${npm_package_version}.zip *",
@@ -28,7 +29,7 @@
     "mousetrap-global-bind": "^1.1.0"
   },
   "devDependencies": {
-    "electron": "^1.4.6",
+    "electron": "^1.4.7",
     "electron-packager": "^8.3.0",
     "xo": "^0.17.1"
   },
