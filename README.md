@@ -5,6 +5,7 @@
 
 # Electron PeaPod
 [![Build Status](https://travis-ci.org/soleo/electron-peapod.svg?branch=master)](https://travis-ci.org/soleo/electron-peapod)
+
 A Unofficial Native PeaPod App for Windows, macOS and Linux Platforms built with Electron.
 
 <div align="center">
@@ -31,6 +32,12 @@ A Unofficial Native PeaPod App for Windows, macOS and Linux Platforms built with
 ```shell
 $ yarn install
 $ yarn start
+```
+
+### Test
+
+```shell
+$ yarn test
 ```
 
 ### Release
