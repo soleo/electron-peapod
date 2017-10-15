@@ -40,6 +40,10 @@ function createMainWindow() {
 	mainWindow = new BrowserWindow({
 		title: app.getName(),
 		show: false,
+		titleBarStyle: 'hidden-inset',
+		// Set the default background color of the window to match the CSS
+	    // background color of the page, this prevents any white flickering
+	    backgroundColor: "#f2f2f2",
 		x: lastWindowState.x,
 		y: lastWindowState.y,
 		width: lastWindowState.width,

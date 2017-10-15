@@ -1,8 +1,13 @@
 /* default color */
+html {
+  /* This allows the window to be dragged when the hidden-inset option is used */
+  -webkit-app-region: drag;
+}
 
 /* night mode */
+/* inspired by https://inclusive-components.club/a-theme-switcher/ */
 :root {
-   background-color: #fefefe;
+   background-color: #f2f2f2;
    filter: invert(100%);
 }
 
@@ -10,6 +15,27 @@
    background-color: inherit;
 }
 
-img:not([src*=".svg"]), video {
+/* revert back the color filters */
+img:not([src*=".svg"]),
+.magnify-glass,
+video {
    filter: invert(100%);
 }
+
+/* add rounded corner for all regular images so that it look nicer */
+img:not([src*=".svg"]) {
+	border-radius: 0.5rem;
+}
+
+/* disable high-contrast-switch. Night mode doesn't need it */
+high-contrast-switch {
+	display: none !important;
+}
+
+/* peapod use inline svg, so I don't want those to be inverted */
+/* reverse for some icons https://www.peapod.com/shop/images/icons/PeapodIcons.json*/
+.icon--search,
+[svg-id="icon_search"] {
+	background-color: transparent;
+}
+

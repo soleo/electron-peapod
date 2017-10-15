@@ -24,15 +24,25 @@ exports.create = win => {
 		console.log('Check Out Shopping Cart');
 	};
 
+	const toggleNightMode = () => {
+
+	}
+
 	const contextMenu = electron.Menu.buildFromTemplate([
 		{
-			label: 'Toggle',
+			label: 'Show/Hide Window',
 			click() {
 				toggleWin();
 			}
 		},
 		{
-			label: 'Checkout Shopping Cart',
+			label: 'Toggle Night Mode',
+			click() {
+				toggleNightMode();
+			}
+		},
+		{
+			label: 'Checkout Cart',
 			click() {
 				checkOutNow();
 			}

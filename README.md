@@ -20,11 +20,11 @@ A Unofficial Native PeaPod App for Windows, macOS and Linux Platforms built with
 
 ### Feature Plans
 
-- [ ] Add support for using shortcuts
+- [X] Add support for using shortcuts
 - [ ] Add notifications for items which haven't been paid yet
 - [ ] Quick search grocery items
 - [ ] Barcode Scanning for merchandise
-- [ ] Support dark theme
+- [X] Support night theme
 
 ### Requirements
 
