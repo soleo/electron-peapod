@@ -8,7 +8,7 @@ const tray = require('./tray');
 const config = require('./config');
 
 const PeaPodBaseURL = 'https://www.peapod.com';
-const PeaPodLoginURL = `${PeaPodBaseURL}/shop/auth.jhtml?gateway=1`;
+const PeaPodLoginURL = `${PeaPodBaseURL}/shop/auth/`;
 
 require('electron-debug')();
 require('electron-dl')();
