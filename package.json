@@ -20,18 +20,18 @@
   "author": "Xinjiang Shao <shaoxinjiang@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "electron-config": "^0.2.1",
-    "electron-context-menu": "^0.8.0",
+    "electron-config": "^1.0.0",
+    "electron-context-menu": "^0.9.1",
     "electron-debug": "^1.1.0",
     "electron-dl": "^1.6.0",
-    "element-ready": "^1.0.0",
+    "element-ready": "^2.1.0",
     "mousetrap": "^1.6.0",
     "mousetrap-global-bind": "^1.1.0"
   },
   "devDependencies": {
     "electron": "^1.4.15",
-    "electron-packager": "^8.5.1",
-    "xo": "^0.17.1"
+    "electron-packager": "^9.1.0",
+    "xo": "^0.18.2"
   },
   "xo": {
     "esnext": true,
