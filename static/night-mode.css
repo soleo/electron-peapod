@@ -18,15 +18,24 @@ video {
 }
 
 .interweaved-content_leader,
-.interweaved-content_trailer{
+.interweaved-content_trailer,
+.splash-page_ads-container{
 	margin-bottom: 0 !important;
 	margin-top: 0 !important;
+	display: none;
 }
 
+
 /* add rounded corner for all regular images so that it look nicer */
+
 img:not([src*=".svg"]){
 	border-radius: 0.5rem;
 }
+
+.kwm-prod_wrapper img {
+	border-radius: inherit;
+}
+
 
 /* disable high-contrast-switch. Night mode doesn't need it */
 high-contrast-switch {
@@ -38,6 +47,11 @@ high-contrast-switch {
 .icon--search,
 [svg-id="icon_search"] {
 	background-color: #d9d9d9 !important;
+}
+
+.carousel-nav_button [svg-id="arrow_carrot-left"],
+.carousel-nav_button [svg-id="arrow_carrot-right"]{
+	background-color: transparent !important;
 }
 
 .product-cart-cell_image {
@@ -63,5 +77,40 @@ high-contrast-switch {
 	opacity: 1 !important;
 	background-image: none !important;
 	height: auto !important;
+}
+
+.item-detail_flag--flag:after{
+	z-index: 0 !important;
+}
+
+.dietary-attribute img {
+	margin-right: 1rem;
+}
+
+/* Rewrite the color for better display */
+.button--green {
+	background-color: rebeccapurple !important;
+}
+.product-grid-cell_main-price,
+.product-list-cell_main-price,
+.mobile-product-list-cell_main-price,
+.product-cart-cell_total,
+.price {
+	color: rebeccapurple !important;
+}
+
+.product-grid-cell_main-price--on-sale,
+.product-list-cell_main-price--on-sale,
+.mobile-product-list-cell_main-price--on-sale,
+.product-cart-cell_total--on-sale,
+.price.on-sale {
+	color: darkcyan !important;
+}
+.item-detail_flag--flag.sale {
+	background-color: darkcyan !important;
+}
+.item-detail_flag--flag.sale:after {
+    border-top-color: darkcyan !important;
+    border-bottom-color: darkcyan !important;
 }
 
