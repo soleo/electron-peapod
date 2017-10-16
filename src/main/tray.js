@@ -10,7 +10,7 @@ exports.create = win => {
 		return;
 	}
 
-	const iconPath = path.join(__dirname, 'static/IconTray.png');
+	const iconPath = path.join(__static, '/IconTray.png');
 
 	const toggleWin = () => {
 		if (win.isVisible()) {
@@ -24,21 +24,11 @@ exports.create = win => {
 		console.log('Check Out Shopping Cart');
 	};
 
-	const toggleNightMode = () => {
-
-	}
-
 	const contextMenu = electron.Menu.buildFromTemplate([
 		{
 			label: 'Show/Hide Window',
 			click() {
 				toggleWin();
-			}
-		},
-		{
-			label: 'Toggle Night Mode',
-			click() {
-				toggleNightMode();
 			}
 		},
 		{
@@ -67,6 +57,6 @@ exports.setBadge = shouldDisplayNoneEmptyCart => {
 	}
 
 	const icon = shouldDisplayNoneEmptyCart ? 'IconTrayNoneEmptyCart.png' : 'IconTray.png';
-	const iconPath = path.join(__dirname, `static/${icon}`);
+	const iconPath = path.join(__static, `/${icon}`);
 	tray.setImage(iconPath);
 };

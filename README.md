@@ -35,8 +35,7 @@ A Unofficial Native PeaPod App for Windows, macOS and Linux Platforms built with
 ### Development
 
 ```shell
-$ yarn install
-$ yarn start
+$ yarn && yarn dev
 ```
 
 ### Test
@@ -48,7 +47,7 @@ $ yarn test
 ### Release
 
 ```shell
-$ yarn build
+$ yarn dist
 ```
 
 

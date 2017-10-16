@@ -7,8 +7,9 @@ const appMenu = require('./menu');
 const tray = require('./tray');
 const config = require('./config');
 
-const PeaPodBaseURL = 'https://www.peapod.com';
-const PeaPodLoginURL = `${PeaPodBaseURL}/shop/auth/`;
+const PEAPOD_BASE_URL = 'https://www.peapod.com';
+const PEAPOD_AUTH_URL = `${PEAPOD_BASE_URL}/shop/auth/`;
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 require('electron-debug')();
 require('electron-dl')();
@@ -40,7 +41,7 @@ function createMainWindow() {
 	mainWindow = new BrowserWindow({
 		title: app.getName(),
 		show: false,
-		titleBarStyle: 'hidden-inset',
+		//titleBarStyle: 'hidden-inset',
 		// Set the default background color of the window to match the CSS
 	    // background color of the page, this prevents any white flickering
 	    backgroundColor: "#f2f2f2",
@@ -48,10 +49,10 @@ function createMainWindow() {
 		y: lastWindowState.y,
 		width: lastWindowState.width,
 		height: lastWindowState.height,
-		icon: process.platform === 'linux' && path.join(__dirname, 'static/Icon.png'),
+		icon: process.platform === 'linux' && path.join(__static, '/Icon.png'),
 		autoHideMenuBar: true,
 		webPreferences: {
-			preload: path.join(__dirname, 'browser.js'),
+			preload: path.join(__static, '/browser.js'),
 			plugins: true,
 			nodeIntegration: false
 		}
@@ -61,7 +62,11 @@ function createMainWindow() {
 		mainWindow.setSheetOffset(40);
 	}
 
-	mainWindow.loadURL(PeaPodLoginURL);
+	if(isDevelopment) {
+		mainWindow.openDevTools();
+	}
+
+	mainWindow.loadURL(PEAPOD_AUTH_URL);
 
 	mainWindow.setTitle(app.getName());
 
@@ -104,7 +109,8 @@ app.on('ready', () => {
 	const page = mainWindow.webContents;
 
 	page.on('dom-ready', () => {
-		page.insertCSS(fs.readFileSync(path.join(__dirname, 'browser.css'), 'utf8'));
+		page.insertCSS(fs.readFileSync(path.join(__static, '/browser.css'), 'utf8'));
+		page.insertCSS(fs.readFileSync(path.join(__static, '/night-mode.css'), 'utf8'));
 		mainWindow.show();
 	});
 

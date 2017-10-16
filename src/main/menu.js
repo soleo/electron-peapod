@@ -20,6 +20,13 @@ function sendAction(action) {
 
 const viewSubmenu = [
 	{
+		label: 'Toggle Night Mode',
+		accelerator: 'CmdOrCtrl+9',
+		click() {
+			sendAction('toggle-night-mode');
+		}
+	},
+	{
 		label: 'Reset Text Size',
 		accelerator: 'CmdOrCtrl+0',
 		click() {
@@ -74,7 +81,7 @@ if (process.platform !== 'darwin') {
 				title: `About ${appName}`,
 				message: `${appName} ${app.getVersion()}`,
 				detail: 'Created by Xinjiang Shao',
-				icon: path.join(__dirname, 'static/Icon.png'),
+				icon: path.join(__static, 'Icon.png'),
 				buttons: []
 			});
 		}

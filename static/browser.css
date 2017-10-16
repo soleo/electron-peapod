@@ -1,0 +1,6 @@
+/* default color */
+html {
+  /* This allows the window to be dragged when the hidden-inset option is used */
+  -webkit-app-region: drag;
+}
+

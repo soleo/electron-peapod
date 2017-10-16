@@ -3,9 +3,10 @@ const electron = require('electron');
 const elementReady = require('element-ready');
 const Mousetrap = require('mousetrap');
 require('mousetrap-global-bind'); // eslint-disable-line import/no-unassigned-import
-const config = require('./config');
+// const config = require('main/config');
 
 const ipc = electron.ipcRenderer;
+let defaultZoomFactor = 1;
 const $ = document.querySelector.bind(document);
 
 function registerShortcuts() {
@@ -36,14 +37,23 @@ function registerShortcuts() {
 	// -- //
 }
 
+function removeNoScriptBlocks() {
+	document.body.querySelector('noscript') && document.body.querySelector('noscript').remove();
+}
+
 function init() {
 	// Figure Out the User's ID first
 	registerShortcuts();
+	removeNoScriptBlocks();
 	console.log('Register Shortcuts');
 }
 
 ipc.on('log-out', () => {
-	// Logout Current User
+	window.href= "https://"
+});
+
+ipc.on('toggle-night-mode', () => {
+	console.log("toggtle night");
 });
 
 ipc.on('zoom-reset', () => {
@@ -51,7 +61,7 @@ ipc.on('zoom-reset', () => {
 });
 
 ipc.on('zoom-in', () => {
-	const zoomFactor = config.get('zoomFactor') + 0.1;
+	const zoomFactor = defaultZoomFactor + 0.1;
 
 	if (zoomFactor < 1.6) {
 		setZoom(zoomFactor);
@@ -59,7 +69,7 @@ ipc.on('zoom-in', () => {
 });
 
 ipc.on('zoom-out', () => {
-	const zoomFactor = config.get('zoomFactor') - 0.1;
+	const zoomFactor = defaultZoomFactor - 0.1;
 
 	if (zoomFactor >= 0.8) {
 		setZoom(zoomFactor);
@@ -69,13 +79,13 @@ ipc.on('zoom-out', () => {
 function setZoom(zoomFactor) {
 	const node = $('#zoomFactor');
 	node.textContent = `body {zoom: ${zoomFactor} !important}`;
-	config.set('zoomFactor', zoomFactor);
+	//config.set('zoomFactor', zoomFactor);
 }
 
 // Inject a global style node to maintain zoom factor after conversation change.
 // Also set the zoom factor if it was set before quitting.
 function zoomInit() {
-	const zoomFactor = config.get('zoomFactor') || 1.0;
+	const zoomFactor = 1 || 1.0;
 	const style = document.createElement('style');
 	style.id = 'zoomFactor';
 
