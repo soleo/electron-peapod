@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "devtron": "^1.4.0",
-    "electron": "1.7.10",
+    "electron": "2.0.9",
     "electron-builder": "^19.34.1",
     "electron-debug": "^1.1.0",
     "electron-webpack": "1.9.0",
