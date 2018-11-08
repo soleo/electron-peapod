@@ -26,7 +26,7 @@
   "author": "Xinjiang Shao <shaoxinjiang@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "electron-config": "^1.0.0",
+    "electron-config": "^2.0.0",
     "electron-context-menu": "^0.9.1",
     "electron-dl": "^1.6.0",
     "element-ready": "^2.1.0",
