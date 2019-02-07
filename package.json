@@ -40,7 +40,7 @@
     "electron-builder": "^19.34.1",
     "electron-debug": "^1.1.0",
     "electron-webpack": "1.9.0",
-    "webpack": "^3.6.0",
+    "webpack": "^4.29.3",
     "webpack-dev-server": "^2.9.2",
     "xo": "^0.18.2"
   },
