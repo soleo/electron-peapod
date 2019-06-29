@@ -38,7 +38,7 @@
     "devtron": "^1.4.0",
     "electron": "1.7.11",
     "electron-builder": "^19.34.1",
-    "electron-debug": "^1.1.0",
+    "electron-debug": "^3.0.1",
     "electron-webpack": "1.9.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.2",
